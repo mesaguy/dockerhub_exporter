@@ -6,18 +6,22 @@
 
 Simple unprivileged implementation of [promhippie/dockerhub_exporter](https://github.com/promhippie/dockerhub_exporter) built for numerous architectures.
 
-Runs on 9505/tcp as the user 'nobody', daemon logs are send to stdout, and the default command must be overridden. The default command will monitor mesaguy's Docker Hub content.
+Runs on 9505/tcp as the user 'nobody', daemon logs are send to stdout, and the default command must be overridden. The default command will monitor debian's Docker Hub content.
 
 ## Usage
 
-The most basic usage is the following, which monitors 'mesaguy' content (not very useful):
+The most basic usage is the following, which monitors 'debian' content:
 
-    docker run -p 9505:9505 -t mesaguy/dockerhub_exporter
+    docker run --rm -p 9505:9505 -it mesaguy/dockerhub_exporter
 
-To monitor a custom organization (ie: debian) use:
+To monitor a organization (ie: fedora) use:
 
-    docker run -p 9505:9505 -t mesaguy/dockerhub_exporter /dockerhub_exporter -dockerhub.org debian
+    docker run --rm -p 9505:9505 -it mesaguy/dockerhub_exporter /dockerhub_exporter -dockerhub.org fedora
 
-To monitor a custom repository use:
+To monitor a repository use:
 
-    docker run -p 9505:9505 -t mesaguy/dockerhub_exporter /dockerhub_exporter -dockerhub.repo mysql/mysql-server,mysql/mysql-cluster
+    docker run --rm -p 9505:9505 -it mesaguy/dockerhub_exporter /dockerhub_exporter -dockerhub.repo mysql/mysql-server,mysql/mysql-cluster
+
+To monitor a organizations and repositories use:
+
+    docker run --rm -p 9505:9505 -it mesaguy/dockerhub_exporter /dockerhub_exporter -dockerhub.repo mysql/mysql-server,mysql/mysql-cluster -dockerhub.org fedora
