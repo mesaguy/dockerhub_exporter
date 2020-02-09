@@ -17,7 +17,7 @@ build:
 		--tag ${DOCKER_IMAGE}:latest \
 		--tag ${DOCKER_IMAGE}:${DOCKERHUB_EXPORTER_VERSION} \
 		--tag ${DOCKER_IMAGE}:${BUILD_DATE} \
-		${DOCKER_BUILD_ARGS} .
+		${DOCKER_BUILDX_ARGS} .
 
 push:
 	docker buildx create --use && \
@@ -28,4 +28,4 @@ push:
 		--tag ${DOCKER_IMAGE}:${DOCKERHUB_EXPORTER_VERSION} \
 		--tag ${DOCKER_IMAGE}:${BUILD_DATE} \
 		--push \
-		${DOCKER_BUILD_ARGS} .
+		${DOCKER_BUILDX_ARGS} .
