@@ -1,6 +1,6 @@
 default: build
 
-BUILD_ARGS ?=
+DOCKER_BUILDX_ARGS ?=
 DOCKER_IMAGE ?= mesaguy/dockerhub_exporter
 ALPINE_VERSION ?= 3.11
 DEBIAN_VERSION ?= buster
