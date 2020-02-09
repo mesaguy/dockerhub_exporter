@@ -3,7 +3,6 @@ default: build
 DOCKER_BUILDX_ARGS ?=
 DOCKER_IMAGE ?= mesaguy/dockerhub_exporter
 ALPINE_VERSION ?= 3.11
-DEBIAN_VERSION ?= buster
 GOLANG_VERSION ?= 1.13
 DOCKERHUB_EXPORTER_VERSION ?= v0.2.0
 # 20200209 There are currently problems compiling on s390x and ppc64le via QEMU

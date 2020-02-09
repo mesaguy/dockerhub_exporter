@@ -1,11 +1,10 @@
 ARG ALPINE_VERSION=latest
-ARG DEBIAN_VERSION=buster
 ARG GOLANG_VERSION=1.13
 ARG DOCKERHUB_EXPORTER_VERSION=master
 ARG SOURCE_COMMIT
 ARG VERSION=latest
 
-from golang:$GOLANG_VERSION-$DEBIAN_VERSION as BUILD
+from golang:$GOLANG_VERSION as BUILD
 
 RUN apt update && apt -y install build-essential
 
