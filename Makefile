@@ -6,7 +6,9 @@ ALPINE_VERSION ?= 3.11
 DEBIAN_VERSION ?= buster
 GOLANG_VERSION ?= 1.13
 DOCKERHUB_EXPORTER_VERSION ?= v0.2.0
-DOCKER_PLATFORMS = linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x,linux/386
+# 20200209 There are currently problems compiling on s390x and ppc64le via QEMU
+#DOCKER_PLATFORMS = linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x,linux/386
+DOCKER_PLATFORMS = linux/amd64,linux/arm64,linux/arm/v7,linux/386
 BUILD_DATE = `date --utc +%Y%m%d`
 
 build:
