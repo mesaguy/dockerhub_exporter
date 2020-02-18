@@ -34,4 +34,5 @@ EXPOSE 9505
 # Copy dockerhub_exporter binary from build image
 COPY --from=BUILD /go/src/github.com/webhippie/dockerhub_exporter/dockerhub_exporter .
 
-CMD ["/dockerhub_exporter", "-dockerhub.org", "debian"]
+ENTRYPOINT ["/dockerhub_exporter"]
+CMD ["-dockerhub.org", "debian"]
