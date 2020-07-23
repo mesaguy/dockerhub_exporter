@@ -1,6 +1,6 @@
 # Alpine based Prometheus dockerhub_exporter
 
-[![DockerHub Badge](http://dockeri.co/image/mesaguy/dockerhub_exporter)](https://hub.docker.com/r/mesaguy/dockerhub_exporter)
+[![DockerHub Badge](https://dockeri.co/image/mesaguy/dockerhub_exporter)](https://hub.docker.com/r/mesaguy/dockerhub_exporter)
 
 ## Introduction
 
