@@ -5,7 +5,7 @@ DOCKER_IMAGE ?= mesaguy/dockerhub_exporter
 ALPINE_VERSION ?= 3.12
 GOLANG_VERSION ?= 1.14
 DOCKERHUB_EXPORTER_VERSION ?= v0.2.0
-DOCKER_PLATFORMS = linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/s390x,linux/386
+DOCKER_PLATFORMS = linux/amd64,linux/arm64,linux/arm/v7,linux/ppc64le,linux/386
 BUILD_DATE = `date --utc +%Y%m%d`
 
 build:
