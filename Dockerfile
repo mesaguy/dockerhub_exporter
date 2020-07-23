@@ -1,26 +1,23 @@
-ARG ALPINE_VERSION=latest
-ARG GOLANG_VERSION=1.13
-ARG DOCKERHUB_EXPORTER_VERSION=master
-ARG SOURCE_COMMIT
-ARG VERSION=latest
+ARG ALPINE_VERSION=3.12
+ARG DOCKERHUB_EXPORTER_VERSION=v0.2.0
+ARG GOLANG_VERSION=1.14
 
 from golang:$GOLANG_VERSION as BUILD
 
-RUN apt update && apt -y install build-essential
+RUN apt-get update && apt-get -y install --no-install-recommends build-essential
 
 # Make and install promu utility
-RUN cd src && \
-    git clone https://github.com/prometheus/promu && \
-    cd promu && \
-    make build && \
-    cp -p promu /usr/bin
+WORKDIR /go/src
+RUN git clone https://github.com/prometheus/promu
+WORKDIR /go/src/promu
+RUN make build && cp -p promu /usr/bin
 
 # Build dockerhub_exporter
-RUN mkdir -p src/github.com/webhippie && \
-    cd src/github.com/webhippie && \
-    git clone https://github.com/promhippie/dockerhub_exporter.git && \
-    cd dockerhub_exporter && \
-    git checkout $DOCKERHUB_EXPORTER_VERSION && \
+RUN mkdir -p github.com/webhippie
+WORKDIR /go/src/github.com/webhippie
+RUN git clone https://github.com/promhippie/dockerhub_exporter.git
+WORKDIR /go/src/github.com/webhippie/dockerhub_exporter
+RUN git checkout $DOCKERHUB_EXPORTER_VERSION && \
     make test build
 
 FROM alpine:$ALPINE_VERSION
