@@ -1,0 +1,12 @@
+---
+env:
+  - HADOLINT_VERSION=1.18.0
+
+install:
+  # Install gems
+  - bundle install
+
+script:
+  - awesome_bot --request-delay 1 --skip-save-results --allow-dupe --white-list=localhost --files $(ls *.md | paste -sd "," -)
+
+  - curl -L "https://github.com/hadolint/hadolint/releases/download/v${HADOLINT_VERSION}/hadolint-Linux-x86_64" -o hadolint && chmod 0750 hadolint && ./hadolint --ignore=SC2086 --ignore DL3008 Dockerfile
