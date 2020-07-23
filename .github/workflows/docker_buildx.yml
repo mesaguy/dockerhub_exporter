@@ -3,6 +3,8 @@ name: 'docker buildx'
 
 on:
   push:
+    branches:
+      - '*'
 
 jobs:
   buildx:
